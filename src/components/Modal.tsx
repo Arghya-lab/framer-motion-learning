@@ -12,7 +12,7 @@ function Modal({
     <AnimatePresence>
       {isOpen && (
         <motion.div
-          className="w-64 fixed top-48 left-[50%] bg-green-500 p-2 rounded-lg"
+          className="w-64 fixed top-48 left-[calc(50%-6rem)] bg-green-500 p-2 rounded-lg"
           style={{
             transform: "translate-3d(-50%, 0,0)",
           }}
