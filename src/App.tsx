@@ -10,7 +10,7 @@ function App() {
 
   return (
     <>
-      {/* Task-VI */}
+      {/* Task-VI & VII & VIII */}
       <NavBar />
       <div className="px-24 py-8">
         <div className="flex gap-2">
