@@ -8,6 +8,7 @@ import { useState } from "react";
 import Modal from "./components/Modal";
 import Accordion from "./components/Accordion";
 import NavBar from "./components/NavBar";
+import SlideShow from "./components/SlideShow";
 
 function App() {
   const [isOpenRedBox, setIsOpenRedBox] = useState(false);
@@ -21,7 +22,9 @@ function App() {
     <>
       {/* Task-VI & VII & VIII */}
       <NavBar />
-      <div className="px-24 py-8">
+      <div className="px-24 py-8 overflow-hidden">
+        {/* Task-XIII  */}
+        <SlideShow />
         <div className="flex gap-2">
           <button
             className="p-1 border-2 border-red-600 rounded-lg mb-4"
