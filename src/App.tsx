@@ -1,4 +1,9 @@
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useMotionValue,
+  useTransform,
+} from "framer-motion";
 import { useState } from "react";
 import Modal from "./components/Modal";
 import Accordion from "./components/Accordion";
@@ -7,6 +12,10 @@ import NavBar from "./components/NavBar";
 function App() {
   const [isOpenRedBox, setIsOpenRedBox] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDraggableCardActive, setIsDraggableCardActive] = useState(true);
+
+  const x = useMotionValue(0);
+  const opacity = useTransform(x, [-200, 0, 200], [0, 1, 0]);
 
   return (
     <>
@@ -47,6 +56,59 @@ function App() {
           animate={{ opacity: [0, 1, 0, 1] }}
           transition={{ duration: 4, times: [0, 0.25, 0.75, 1] }}
         />
+        {/* Task-IX  */}
+        <motion.div
+          className="h-48 w-48 p-4 text-center bg-orange-500 mt-8 flex justify-center items-center rounded-lg text-white text-xl"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 1.2 }}
+          // onHoverEnd={() => console.log("Hover end.")}
+        >
+          Hover card
+        </motion.div>
+        {/* Task-X  */}
+        <motion.div
+          className="h-48 w-48 p-4 text-center bg-yellow-400 mt-8 flex justify-center items-center rounded-lg text-white text-xl"
+          drag
+          dragConstraints={{
+            top: -100,
+            left: -100,
+            right: 0,
+            bottom: 0,
+          }}>
+          Draggable card (All side)
+        </motion.div>
+        {/* Task-XI & XII  */}
+        <AnimatePresence>
+          {isDraggableCardActive && (
+            <motion.div
+              exit={{
+                height: 0,
+                opacity: 0,
+              }}
+              transition={{
+                opacity: {
+                  duration: 0,
+                },
+              }}>
+              <motion.div
+                className="h-48 w-48 p-4 text-center bg-green-400 mt-8 flex justify-center items-center rounded-lg text-white text-xl"
+                drag="x"
+                dragConstraints={{
+                  left: 0,
+                  right: 0,
+                }}
+                onDragEnd={(_, info) => {
+                  setIsDraggableCardActive(Math.abs(info.point.x) < 700);
+                }}
+                style={{
+                  x,
+                  opacity,
+                }}>
+                Draggable card (Horizontal)
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </>
   );

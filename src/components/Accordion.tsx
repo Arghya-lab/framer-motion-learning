@@ -13,7 +13,7 @@ function Accordion() {
   return (
     <div className="w-92 mb-4">
       <div role="button" onClick={() => setIsOpen((prev) => !prev)}>
-        <h2 className="text-4xl">Dreamwalking Ballad</h2>
+        <h2 className="text-4xl mb-2">Dreamwalking Ballad</h2>
         <h6 className="text-xl">BY FEDERICO GARCÍA LORCA</h6>
         <hr />
       </div>

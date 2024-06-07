@@ -1,16 +1,16 @@
 import { DOMAttributes } from "react";
 
 interface MenuProps extends DOMAttributes<HTMLSpanElement> {
-  size?: number;
-  color?: string;
-  strokeWidth?: number;
+  iconSize?: number;
+  iconColor?: string;
+  iconStrokeWidth?: number;
   className?: string;
 }
 
 function Menu({
-  size = 24,
-  color = "currentColor",
-  strokeWidth = 2,
+  iconSize = 24,
+  iconColor = "currentColor",
+  iconStrokeWidth = 2,
   className,
   ...restProps
 }: MenuProps) {
@@ -18,12 +18,12 @@ function Menu({
     <span className={className} {...restProps}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        width={size.toString()}
-        height={size.toString()}
+        width={iconSize.toString()}
+        height={iconSize.toString()}
         viewBox="0 0 24 24"
         fill="none"
-        stroke={color}
-        stroke-width={strokeWidth.toString()}
+        stroke={iconColor}
+        stroke-width={iconStrokeWidth.toString()}
         stroke-linecap="round"
         stroke-linejoin="round"
         className="lucide lucide-menu">

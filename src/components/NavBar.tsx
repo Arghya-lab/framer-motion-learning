@@ -46,7 +46,7 @@ function NavBar() {
     <>
       <div className="flex gap-4 text-cyan-50 bg-black p-2">
         <Menu
-          size={48}
+          iconSize={48}
           onClick={() => setIsOpen((prev) => !prev)}
           className="cursor-pointer"
         />
@@ -68,7 +68,7 @@ function NavBar() {
           className="text-white text-3xl font-mono"
           variants={ulVariants}>
           {links.map((item) => (
-            <motion.li variants={liVariants} className=" mb-2">
+            <motion.li key={item.title} variants={liVariants} className=" mb-2">
               <a href={item.link} className="hover:underline">
                 {item.title}
               </a>
